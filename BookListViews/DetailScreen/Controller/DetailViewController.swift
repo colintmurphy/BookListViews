@@ -41,7 +41,6 @@ class DetailViewController: UIViewController {
                 }
             }
         }
-        
         if let info = self.info?.getNonNilItems() {
             self.labelInfo = info
             self.detailTableView.reloadData()
@@ -51,7 +50,6 @@ class DetailViewController: UIViewController {
     // MARK: - View Online
     
     @objc func viewOnline() {
-        
         if let urlString = self.info?.previewLink,
            let url = URL(string: urlString){
             self.presentSafariVC(with: url)
@@ -59,7 +57,6 @@ class DetailViewController: UIViewController {
     }
     
     func presentSafariVC(with url: URL) {
-        
         let safariVC = SFSafariViewController(url: url)
         safariVC.delegate = self
         present(safariVC, animated: true)
@@ -87,7 +84,6 @@ extension DetailViewController: UITableViewDataSource {
         } else if let data = self.labelInfo[indexPath.row].data as? String {
             cell.infoLabel.text = data
         }
-        
         return cell
     }
 }

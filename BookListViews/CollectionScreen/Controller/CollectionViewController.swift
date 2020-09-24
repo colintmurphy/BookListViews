@@ -36,7 +36,6 @@ class CollectionViewController: UIViewController {
         
         ServiceManager.manager.request(withUrl: url) { (data, error) in
             guard let dataObj = data as? Data else { return}
-            
             do {
                 let responseObj = try JSONDecoder().decode(ApiResponse.self, from: dataObj)
                 self.datasource = responseObj.items ?? []
@@ -49,7 +48,6 @@ class CollectionViewController: UIViewController {
     }
     
     func stopActivity() {
-        
         self.activityIndicator.stopAnimating()
         self.activityIndicator.isHidden = true
     }
@@ -71,7 +69,6 @@ extension CollectionViewController: UICollectionViewDataSource {
         if let volumeInfo = self.datasource[indexPath.row].volumeInfo {
             cell.configure(using: volumeInfo)
         }
-        
         return cell
     }
 }
