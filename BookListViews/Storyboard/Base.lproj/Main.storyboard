@@ -31,14 +31,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZWv-LB-r3i">
-                                                    <rect key="frame" x="28" y="19" width="80" height="82"/>
+                                                    <rect key="frame" x="28" y="19" width="82" height="82"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="sDr-Rb-1s0"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="sDr-Rb-1s0"/>
                                                         <constraint firstAttribute="width" secondItem="ZWv-LB-r3i" secondAttribute="height" multiplier="1:1" id="tsx-NQ-q4a"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PUM-bb-4Bf">
-                                                    <rect key="frame" x="124" y="19" width="262" height="82"/>
+                                                    <rect key="frame" x="126" y="19" width="260" height="82"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-aN-5vg">
                                                             <rect key="frame" x="0.0" y="0.0" width="84.5" height="37"/>
