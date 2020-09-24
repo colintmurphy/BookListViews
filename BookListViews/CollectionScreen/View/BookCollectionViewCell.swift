@@ -16,6 +16,11 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     func configure(using itemInfo: VolumeInfo) {
         
+        self.bookImageView.image = nil
+        self.bookImageView.layer.cornerRadius = 10
+        self.bookImageView.layer.borderWidth = 1.0
+        self.bookImageView.layer.borderColor = UIColor.lightGray.cgColor
+        
         self.titleLabel.text = itemInfo.title
         if let urlString = itemInfo.imageLinks?.smallThumbnail {
             

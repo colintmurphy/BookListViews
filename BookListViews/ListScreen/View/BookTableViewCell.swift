@@ -29,9 +29,10 @@ class BookTableViewCell: UITableViewCell {
         self.subTitleLabel.text = itemInfo.subTitle
         self.subTitleLabel.isHidden = itemInfo.subTitle?.isEmpty ?? true
         
+        self.bookImageView.image = nil
         self.bookImageView.backgroundColor = .white
         self.bookImageView.layer.cornerRadius = 15
-        self.bookImageView.layer.borderWidth = 1.5
+        self.bookImageView.layer.borderWidth = 1.0
         self.bookImageView.layer.borderColor = UIColor.systemGray.cgColor
         
         if let urlString = itemInfo.imageLinks?.smallThumbnail {

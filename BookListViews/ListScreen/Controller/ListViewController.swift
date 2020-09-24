@@ -83,7 +83,6 @@ extension ListViewController: UITableViewDataSource
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.reuseID) as? BookTableViewCell else { fatalError("could not create BookTableViewCell") }
         
-        cell.bookImageView.image = nil
         if let volumeInfo = self.datasource[indexPath.row].volumeInfo {
             cell.configure(using: volumeInfo)
         }

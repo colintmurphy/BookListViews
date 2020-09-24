@@ -65,7 +65,6 @@ extension CollectionViewController: UICollectionViewDataSource {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.reuseID, for: indexPath) as? BookCollectionViewCell else { fatalError("could make BookCollectionViewCell") }
         
-        cell.bookImageView.image = nil
         if let volumeInfo = self.datasource[indexPath.row].volumeInfo {
             cell.configure(using: volumeInfo)
         }
