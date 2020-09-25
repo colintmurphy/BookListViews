@@ -1,5 +1,12 @@
 # BookListViews
+## About
 - a simple demonstration of how TableView and CollectionView work using Google Books API
+
+## Utalizes
+- UITableView
+- UICollectionView
+- SafariServices
+- Google Books API
 
 ## Images
 
