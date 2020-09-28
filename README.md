@@ -2,7 +2,7 @@
 ## About
 - A simple demonstration of how TableView and CollectionView work using Google Books API
 
-## Utalizes
+## Utilizes
 - UITableView
 - UICollectionView
 - SafariServices
