@@ -11,8 +11,8 @@ class ListViewController: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var booksTableView: UITableView! {
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var booksTableView: UITableView! {
         didSet {
             self.booksTableView.tableFooterView = UIView()
         }
@@ -20,7 +20,7 @@ class ListViewController: UIViewController {
     
     // MARK: - Variables
     
-    var datasource: [ItemInfo] = [] {
+    private var datasource: [ItemInfo] = [] {
         didSet {
             self.booksTableView.reloadData()
         }
@@ -35,7 +35,9 @@ class ListViewController: UIViewController {
     
     // MARK: - Methods
     
-    func getDataFromServer() {
+    private func getDataFromServer() {
+        
+        ServiceManager.manager.alamoRequest()
         
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=coding") else { return }
         self.activityIndicator.startAnimating()

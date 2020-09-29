@@ -5,6 +5,7 @@
 //  Created by Colin Murphy on 9/22/20.
 //
 
+import Alamofire
 import UIKit
 
 class ServiceManager {
@@ -12,13 +13,23 @@ class ServiceManager {
     // MARK: - Variables
     
     static let manager = ServiceManager()
-    let cache = NSCache<NSString, UIImage>()
+    private let cache = NSCache<NSString, UIImage>()
     
     // MARK: - Init
     
     private init() { }
     
     // MARK: - Methods
+    
+    func alamoRequest() {
+        
+        AF.request("https://www.googleapis.com/books/v1/volumes?q=coding")
+            .validate()
+            .responseDecodable(of: ApiResponse.self) { (response) in
+                guard let data = response.value else { return }
+                print("alamoRequest: ", data)
+        }
+    }
     
     func request(withUrl url: URL, completed: @escaping (Any?, Error?) -> Void) {
 

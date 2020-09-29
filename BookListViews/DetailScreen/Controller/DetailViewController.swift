@@ -12,13 +12,13 @@ class DetailViewController: UIViewController {
     
     // MARK: - IBOutlets
     
-    @IBOutlet weak var bookImageView: UIImageView!
-    @IBOutlet weak var detailTableView: UITableView!
+    @IBOutlet private weak var bookImageView: UIImageView!
+    @IBOutlet private weak var detailTableView: UITableView!
     
     // MARK: - Variables
     
     var info: VolumeInfo?
-    var labelInfo: [(title: String, data: Any)] = []
+    private var labelInfo: [(title: String, data: Any)] = []
     
     // MARK: - View Life Cycles
     
@@ -29,7 +29,7 @@ class DetailViewController: UIViewController {
     
     // MARK: - Setup
     
-    func setup() {
+    private func setup() {
         
         let webButton = UIBarButtonItem(title: "View Online", style: .plain, target: self, action: #selector(self.viewOnline))
         self.navigationItem.rightBarButtonItem = webButton
@@ -49,14 +49,14 @@ class DetailViewController: UIViewController {
     
     // MARK: - View Online
     
-    @objc func viewOnline() {
+    @objc private func viewOnline() {
         if let urlString = self.info?.previewLink,
            let url = URL(string: urlString){
             self.presentSafariVC(with: url)
         }
     }
     
-    func presentSafariVC(with url: URL) {
+    private func presentSafariVC(with url: URL) {
         let safariVC = SFSafariViewController(url: url)
         safariVC.delegate = self
         present(safariVC, animated: true)
@@ -75,15 +75,8 @@ extension DetailViewController: UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: DetailTableViewCell.reuseID) as? DetailTableViewCell else { fatalError("couldn't create DetailTableViewCell") }
         
-        cell.detailTypeLabel.text = self.labelInfo[indexPath.row].title
+        cell.set(type: self.labelInfo[indexPath.row].title, info: self.labelInfo[indexPath.row].data)
         
-        if let data = self.labelInfo[indexPath.row].data as? Int {
-            cell.infoLabel.text = "\(data)"
-        } else if let data = self.labelInfo[indexPath.row].data as? [String] {
-            cell.infoLabel.text = data.joined(separator: ", ")
-        } else if let data = self.labelInfo[indexPath.row].data as? String {
-            cell.infoLabel.text = data
-        }
         return cell
     }
 }

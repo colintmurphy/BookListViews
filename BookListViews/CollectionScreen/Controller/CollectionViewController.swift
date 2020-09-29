@@ -9,12 +9,12 @@ import UIKit
 
 class CollectionViewController: UIViewController {
     
-    @IBOutlet weak var booksCollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var booksCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Variables
     
-    var datasource: [ItemInfo] = [] {
+    private var datasource: [ItemInfo] = [] {
         didSet {
             self.booksCollectionView.reloadData()
         }
@@ -23,13 +23,14 @@ class CollectionViewController: UIViewController {
     // MARK: - View Life Cycles
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.getDataFromServer()
     }
     
     // MARK: - Methods
     
-    func getDataFromServer() {
+    private func getDataFromServer() {
         
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=coding") else { return }
         self.activityIndicator.startAnimating()
@@ -47,7 +48,8 @@ class CollectionViewController: UIViewController {
         }
     }
     
-    func stopActivity() {
+    private func stopActivity() {
+        
         self.activityIndicator.stopAnimating()
         self.activityIndicator.isHidden = true
     }
