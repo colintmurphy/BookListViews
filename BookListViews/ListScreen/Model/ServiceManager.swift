@@ -5,7 +5,7 @@
 //  Created by Colin Murphy on 9/22/20.
 //
 
-import Alamofire
+// import Alamofire
 import UIKit
 
 class ServiceManager {
@@ -20,16 +20,6 @@ class ServiceManager {
     private init() { }
     
     // MARK: - Methods
-    
-    func alamoRequest() {
-        
-        AF.request("https://www.googleapis.com/books/v1/volumes?q=coding")
-            .validate()
-            .responseDecodable(of: ApiResponse.self) { (response) in
-                guard let data = response.value else { return }
-                print("alamoRequest: ", data)
-        }
-    }
     
     func request(withUrl url: URL, completed: @escaping (Any?, Error?) -> Void) {
 
@@ -48,6 +38,18 @@ class ServiceManager {
             }
         }.resume()
     }
+    
+    /*
+    func alamoRequest() {
+        
+        AF.request("https://www.googleapis.com/books/v1/volumes?q=coding")
+            .validate()
+            .responseDecodable(of: ApiResponse.self) { (response) in
+                guard let data = response.value else { return }
+                print("alamoRequest: ", data)
+        }
+    }
+     */
     
     func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
         

@@ -37,7 +37,7 @@ class ListViewController: UIViewController {
     
     private func getDataFromServer() {
         
-        ServiceManager.manager.alamoRequest()
+        // ServiceManager.manager.alamoRequest()
         
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=coding") else { return }
         self.activityIndicator.startAnimating()
