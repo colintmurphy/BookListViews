@@ -8,12 +8,12 @@
 import UIKit
 
 class CollectionViewController: UIViewController {
-    
+
     @IBOutlet private weak var booksCollectionView: UICollectionView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    
+
     // MARK: - Variables
-    
+
     private var datasource: [ItemInfo] = [] {
         didSet {
             self.booksCollectionView.reloadData()
@@ -21,20 +21,20 @@ class CollectionViewController: UIViewController {
     }
 
     // MARK: - View Life Cycles
-    
+
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
         self.getDataFromServer()
     }
-    
+
     // MARK: - Methods
-    
+
     private func getDataFromServer() {
-        
+
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=coding") else { return }
         self.activityIndicator.startAnimating()
-        
+
         ServiceManager.manager.request(withUrl: url) { (data, error) in
             guard let dataObj = data as? Data else { return}
             do {
@@ -47,9 +47,9 @@ class CollectionViewController: UIViewController {
             }
         }
     }
-    
+
     private func stopActivity() {
-        
+
         self.activityIndicator.stopAnimating()
         self.activityIndicator.isHidden = true
     }
@@ -58,15 +58,16 @@ class CollectionViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension CollectionViewController: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.datasource.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.reuseID, for: indexPath) as? BookCollectionViewCell else { fatalError("could make BookCollectionViewCell") }
-        
+
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookCollectionViewCell.reuseID,
+            for: indexPath) as? BookCollectionViewCell else { fatalError("could make BookCollectionViewCell") }
+
         if let volumeInfo = self.datasource[indexPath.row].volumeInfo {
             cell.configure(using: volumeInfo)
         }
@@ -77,9 +78,9 @@ extension CollectionViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension CollectionViewController: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+
         collectionView.deselectItem(at: indexPath, animated: true)
         if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
             detailVC.info = self.datasource[indexPath.row].volumeInfo

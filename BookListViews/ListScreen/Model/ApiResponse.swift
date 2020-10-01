@@ -8,13 +8,13 @@
 import Foundation
 
 struct ApiResponse: Decodable {
-    
+
     var bookKind: String?
     var totalItems: Int?
     var items: [ItemInfo]?
-    
+
     enum CodingKeys: String, CodingKey {
-        
+
         case bookKind = "kind"
         case totalItems
         case items
@@ -22,7 +22,7 @@ struct ApiResponse: Decodable {
 }
 
 struct ItemInfo: Decodable {
-    
+
     var itemKind: String?
     var itemId: String?
     var eTag: String?
@@ -31,9 +31,9 @@ struct ItemInfo: Decodable {
     var saleInfo: SalesInfo?
     var accessInfo: AccessInfo?
     var searchInfo: SearchInfo?
-    
+
     enum CodingKeys: String, CodingKey {
-        
+
         case itemKind = "kind"
         case itemId = "id"
         case eTag = "etag"
@@ -50,7 +50,7 @@ struct SearchInfo: Decodable {
 }
 
 struct SalesInfo: Decodable {
-    
+
     var country: String?
     var saleability: String?
     var isEbook: Bool?
@@ -61,7 +61,7 @@ struct SalesInfo: Decodable {
 }
 
 struct Offer: Decodable {
-    
+
     var finskyOfferType: Int?
     var listPrice: Price?
     var retailPrice: Price?
@@ -69,13 +69,13 @@ struct Offer: Decodable {
 }
 
 struct Price: Decodable {
-    
+
     var amount: Double?
     var currencyCode: String?
 }
 
 struct VolumeInfo: Decodable {
-    
+
     var title: String?
     var subTitle: String?
     var authors: [String]?
@@ -98,9 +98,9 @@ struct VolumeInfo: Decodable {
     var previewLink: String?
     var infoLink: String?
     var canonicalVolumeLink: String?
-    
+
     enum CodingKeys: String, CodingKey {
-        
+
         case title
         case subTitle = "subtitle"
         case authors
@@ -124,11 +124,11 @@ struct VolumeInfo: Decodable {
         case infoLink
         case canonicalVolumeLink
     }
-    
+
     func getNonNilItems() -> [(String, Any)] {
-        
+
         var items: [(String, Any)] = []
-        
+
         if let title = title {
             items.append(("Title:", title))
         }
@@ -152,43 +152,43 @@ struct VolumeInfo: Decodable {
         if let pageCount = pageCount {
             items.append(("Page Count:", pageCount))
         }
-        
+
         return items
     }
 }
 
 struct IndustryIdentifier: Decodable {
-    
+
     var type: String?
     var identifier: String?
 }
 
 struct ReadingMode: Decodable {
-    
+
     var text: Bool?
     var image: Bool?
 }
 
 struct PanelizationSummary: Decodable {
-    
+
     var containsEpubBubbles: Bool?
     var containsImageBubbles: Bool?
 }
 
 struct ImageLinks: Decodable {
-    
+
     var smallThumbnail: String?
     var thumbNail: String?
-    
+
     enum CodingKeys: String, CodingKey {
-        
+
         case smallThumbnail
         case thumbNail = "thumbnail"
     }
 }
 
 struct AccessInfo: Decodable {
-    
+
     var country: String?
     var viewability: String?
     var embeddable: Bool?
@@ -199,9 +199,9 @@ struct AccessInfo: Decodable {
     var webReaderLink: String?
     var accessViewStatus: String?
     var quoteSharingAllowed: Bool?
-    
+
     enum CodingKeys: String, CodingKey {
-        
+
         case country
         case viewability
         case embeddable
@@ -220,9 +220,9 @@ struct Epub: Decodable {
 }
 
 struct PdfInfo: Decodable {
-    
+
     var acsTokenLink: Bool?
-    
+
     enum CodingKeys: String, CodingKey {
         case acsTokenLink = "isAvailable"
     }

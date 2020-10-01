@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailTableViewCell: UITableViewCell {
-    
+
     @IBOutlet private weak var detailTypeLabel: UILabel!
     @IBOutlet private weak var infoLabel: UILabel!
 
@@ -21,11 +21,11 @@ class DetailTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
+
     func set(type: String, info: Any) {
-        
+
         self.detailTypeLabel.text = type
-        
+
         if let data = info as? Int {
             self.infoLabel.text = "\(data)"
         } else if let data = info as? [String] {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -205,7 +205,6 @@
 				A810A5D1F0A24EA519B31149 /* Pods-BookListViews.debug.xcconfig */,
 				1D3D9A0258CD4ABE4E240F1F /* Pods-BookListViews.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,6 +220,7 @@
 				21A6C02C251AC136007626F7 /* Frameworks */,
 				21A6C02D251AC136007626F7 /* Resources */,
 				320C5625B2E96EFB77023D47 /* [CP] Embed Pods Frameworks */,
+				212F297F25263AFB008BFC9A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -277,6 +277,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		212F297F25263AFB008BFC9A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"error: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
 		320C5625B2E96EFB77023D47 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
