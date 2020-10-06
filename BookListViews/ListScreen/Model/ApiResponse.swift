@@ -136,7 +136,7 @@ struct VolumeInfo: Decodable {
             items.append(("Subtitle:", subTitle))
         }
         if let authors = authors {
-            if authors.count > 0 {
+            if !authors.isEmpty {
                 items.append(("Authors:", authors))
             }
         }

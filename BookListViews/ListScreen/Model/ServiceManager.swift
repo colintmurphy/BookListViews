@@ -23,7 +23,7 @@ class ServiceManager {
 
     func request(withUrl url: URL, completed: @escaping (Any?, Error?) -> Void) {
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data,
                 let response = response as? HTTPURLResponse, (response.statusCode == 200) else {
                 DispatchQueue.main.async {

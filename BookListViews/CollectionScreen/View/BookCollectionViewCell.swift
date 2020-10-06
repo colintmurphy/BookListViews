@@ -24,11 +24,11 @@ class BookCollectionViewCell: UICollectionViewCell {
         self.titleLabel.text = itemInfo.title
         if let urlString = itemInfo.imageLinks?.smallThumbnail {
 
-            ServiceManager.manager.downloadImage(from: urlString, completed: { (image) in
+            ServiceManager.manager.downloadImage(from: urlString) { image in
                 DispatchQueue.main.async {
                     self.bookImageView.image = image
                 }
-            })
+            }
         }
     }
 }

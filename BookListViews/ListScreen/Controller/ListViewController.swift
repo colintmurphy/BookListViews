@@ -42,8 +42,8 @@ class ListViewController: UIViewController {
         guard let url = URL(string: "https://www.googleapis.com/books/v1/volumes?q=coding") else { return }
         self.activityIndicator.startAnimating()
 
-        ServiceManager.manager.request(withUrl: url) { (data, error) in
-            guard let dataObj = data as? Data else { return}
+        ServiceManager.manager.request(withUrl: url) { data, error in
+            guard let dataObj = data as? Data else { return }
 
             do {
                 let responseObj = try JSONDecoder().decode(ApiResponse.self, from: dataObj)
@@ -66,7 +66,7 @@ extension ListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
 
-        if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "DetailViewController") as? DetailViewController {
+        if let detailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController {
             detailVC.info = self.datasource[indexPath.row].volumeInfo
             self.navigationController?.pushViewController(detailVC, animated: true)
         }

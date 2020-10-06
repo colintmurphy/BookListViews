@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = webButton
 
         if let imageUrl = info?.imageLinks?.thumbNail {
-            ServiceManager.manager.downloadImage(from: imageUrl) { (image) in
+            ServiceManager.manager.downloadImage(from: imageUrl) { image in
                 DispatchQueue.main.async {
                     self.bookImageView.image = image
                 }
